@@ -1,0 +1,24 @@
+int buzzerPin = D3; // Pin connected to the buzzer
+
+void myHandler(const char *event, const char *data) {
+  // Handle the received data
+  
+  // Turn on the buzzer
+  digitalWrite(buzzerPin, HIGH);
+  delay(1000); // Buzzer on for 1 second
+  digitalWrite(buzzerPin, LOW);
+}
+
+void setup() {
+  // Other setup code
+
+  // Subscribe to the event
+  Particle.subscribe("LowTemp", myHandler, MY_DEVICES);
+
+  // Set the buzzer pin as an output
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  // Other loop code
+}
